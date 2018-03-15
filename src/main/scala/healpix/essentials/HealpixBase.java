@@ -22,13 +22,6 @@ package healpix.essentials;
 
 import java.util.Arrays;
 
-import org.apache.hadoop.hive.ql.parse.HiveParser.ifExists_return;
-import org.apache.hadoop.hive.ql.parse.HiveParser_IdentifiersParser.booleanValue_return;
-
-import com.sun.mail.handlers.multipart_mixed;
-
-import breeze.linalg.max;
-
 /** Basic opersations related to the HEALPix pixelisation.
     This class is conceptually very similar the the Healpix_Base class
     of Healpix_cxx. It supports the NESTED scheme for nside parameters which are
@@ -763,7 +756,7 @@ public class HealpixBase extends HealpixTables
     }
   
   
-  private RangeSet [] queryRingsInternal(Long cpix, Pointing ptg,  double [] radiuses, int fact)
+  private RangeSet [] queryRingsInternal(Pointing ptg,  double [] radiuses, int fact)
 	throws Exception
 	{
 	boolean inclusive=(fact!=0);
@@ -802,7 +795,7 @@ public class HealpixBase extends HealpixTables
 			}
 		}
 
-		// TODO: οεπεδελΰςό
+		// TODO: ΠΏΠµΡ€ΠµΠ΄ΠµΠ»Π°Ρ‚Ρ
 		//if (rsmall>=Math.PI)
 		//  { pixsets.append(0,npix); return pixsets; }
 
@@ -911,7 +904,7 @@ public class HealpixBase extends HealpixTables
   				ip_hi[my + mmy] = (long)Math.floor
   						(nr*Constants.inv_twopi*(ptg.phi+dphi[my + mmy]) - shift);
   				
-  				// TODO: οεπεδελΰςό
+  				// TODO: ΠΏΠµΡ€ΠµΠ΄ΠµΠ»Π°Ρ‚Ρ
   				/*if (fct>1)
   				{
   					while ((ip_lo<=ip_hi) && checkPixelRing
@@ -1249,12 +1242,12 @@ public class HealpixBase extends HealpixTables
     }
 
   
-  public RangeSet [] queryRings(Long pix, Pointing ptg, double [] radiuses)
+  public RangeSet [] queryRings(Pointing ptg, double [] radiuses)
 		  throws Exception
-  { return queryRingsInternal (pix, ptg, radiuses, 0); }
-  public RangeSet [] queryRingsInclusive (Long pix, Pointing ptg, double [] radiuses, int fact)
+  { return queryRingsInternal (ptg, radiuses, 0); }
+  public RangeSet [] queryRingsInclusive (Pointing ptg, double [] radiuses, int fact)
 		  throws Exception
-  { return queryRingsInternal (pix, ptg, radiuses, fact); }
+  { return queryRingsInternal (ptg, radiuses, fact); }
   
   
   /** Returns a range set of pixels whose centers lie within a given disk. <p>

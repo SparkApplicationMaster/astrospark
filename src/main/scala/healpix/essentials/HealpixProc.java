@@ -20,10 +20,6 @@
 
 package healpix.essentials;
 
-import org.apache.hadoop.hive.ql.parse.HiveParser.ifExists_return;
-import org.netlib.util.doubleW;
-import org.stringtemplate.v4.compiler.STParser.element_return;
-
 import scala.Array;
 
 /** Procedural interface to the {@link HealpixBase} functionality.
@@ -99,8 +95,8 @@ public abstract class HealpixProc extends HealpixBase
     { return br[order].boundaries(pix,step); }
 
   
-  public static RangeSet [] queryRingsRing(int order, Long pix, Pointing ptg, double [] radiuses)
-    throws Exception { return br[order].queryRings(pix, ptg, radiuses); }
+  public static RangeSet [] queryRingsRing(int order, Pointing ptg, double [] radiuses)
+    throws Exception { return br[order].queryRings(ptg, radiuses); }
   
   public static RangeSet queryDiscNest(int order, Pointing ptg, double radius)
     throws Exception

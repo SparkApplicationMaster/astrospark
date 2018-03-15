@@ -1,0 +1,8 @@
+.git/
+.idea/
+target/
+project/target/
+project/project/target
+tasks/
+cltv_model/src/test/
+*.pyc
